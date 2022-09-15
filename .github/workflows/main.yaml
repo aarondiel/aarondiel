@@ -2,9 +2,10 @@ on:
   push:
     branches:
       - "main"
+
   workflow_dispatch:
   schedule:
-  - cron 0 0/12 * * *
+    - cron 0 0/12 * * *
 
 
 jobs:
@@ -13,11 +14,11 @@ jobs:
     permissions:
       contents: write
     steps:
-    - uses: lowlighter/metrics@latest
-      with:
-        filename: isocalendar.svg
-        token: ${{ secrets.TOKEN }}
-        config_timezone: "Europe/Berlin"
-        base: header
-        plugin_isocalendar: yes
-        plugin_isocalendar_duration: full-year
+      - uses: lowlighter/metrics@latest
+        with:
+          filename: isocalendar.svg
+          token: ${{ secrets.TOKEN }}
+          config_timezone: "Europe/Berlin"
+          base: header
+          plugin_isocalendar: yes
+          plugin_isocalendar_duration: full-year
