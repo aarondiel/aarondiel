@@ -1,0 +1,23 @@
+on:
+  push:
+    branches:
+      - "main"
+  workflow_dispatch:
+  schedule:
+  - cron 0 0/12 * * *
+
+
+jobs:
+  commit_calendar:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+    - uses: lowlighter/metrics@latest
+      with:
+        filename: isocalendar.svg
+        token: ${{ secrets.TOKEN }}
+        config_timezone: "Europe/Berlin"
+        base: header
+        plugin_isocalendar: yes
+        plugin_isocalendar_duration: full-year
